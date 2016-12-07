@@ -8,14 +8,32 @@
 <body>
 
 	<?php
+		$servername = "localhost";
+		$username = "root";
+		$password = "aiswarya";
+		$dbname = "ammasite-db";
 
-	mysql_connect("localhost", "root", "aiswarya") or die(mysql_error());
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+		     die("Connection failed: " . $conn->connect_error);
+		} 
 
-	mysql_query("CREATE DATABASE ammasite-db") or die(mysql_error());
+		$sql = "SELECT id, NAME, PHONENUMBER, EMAIL FROM customers";
+		$result = $conn->query($sql);
 
-	mysql_close();
+		if ($result->num_rows > 0) {
+		     // output data of each row
+		     while($row = $result->fetch_assoc()) {
+		         echo "<br> id: ". $row["id"]. " - Name: ". $row["NAME"]. " " . $row["PHONENUMBER"] . " " . $row["EMAIL"] . "<br>";
+		     }
+		} else {
+		     echo "0 results";
+		}
 
-	?>
+		$conn->close();
+	?>  
 
 
 	<p><b> Print date </b></p>
