@@ -1,37 +1,31 @@
-<html>
-	<head>
-	<title>Form</title>
-	</head>
-
-	<body>
 
 	<?php
 
-	//$strSQL = "INSERT INTO contactdetails(FirstName) values('" . $_POST["FirstName"] . "')";
+	$servername = "localhost";
+	$username = "root";
+	$password = "aiswarya";
+	$dbname = "ammasite-db";
 
-	$strSQL = "INSERT INTO contactdetails(";
-	$strSQL = $strSQL . "FirstName) ";
+	$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+		} 
 
-	$strSQL = $strSQL. "VALUES("
-	$strSQL = $strSQL . "'$_POST["FirstName"]')";
 
-	mysql_query($strSQL) or die(mysql_error());
-	
-	mysql_close();
 
-	echo "<h1>Hello " . $_POST["FirstName"] . "</h1>";
+	$strSQL = "INSERT INTO customers(NAME) values('" . $_POST["FullName"] . "')"
+
+	if ($conn->query($sql) === TRUE) {
+    echo "New entry created successfully";
+    echo "<h1>Hello " . $_POST["FullName"] . "</h1>";
+
+	} 
+	else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
 
 	?>
-
-	<!-- <?php
-//	 $rs = mysql_query($strSQL);
-//	 while ($row = mysql_fetch_array($rs)) {
-//   $strName = $row['FirstName'] . " " . $row['LastName'];
-
-	}
-
-	?> -->
-
-	</body>
-</html>
 

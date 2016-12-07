@@ -33,7 +33,16 @@
 		}
 
 		$conn->close();
-	?>  
+	?>
+
+
+<!--Adding form element -->
+		<form method="post" action="handler.php">
+		<input type="text" name="FullName">
+		<input type="submit" value = "Submit">
+		</form>
+<!--End form element-->
+
 
 
 	<p><b> Print date </b></p>
