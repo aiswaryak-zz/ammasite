@@ -16,13 +16,13 @@
 
 	$strSQL = "INSERT INTO customers(NAME) values('" . $_POST["FullName"] . "')"
 
-	if ($conn->query($sql) === TRUE) {
+	if ($conn->query($strSQL) === TRUE) {
     echo "New entry created successfully";
     echo "<h1>Hello " . $_POST["FullName"] . "</h1>";
 
 	} 
 	else {
-		    echo "Error: " . $sql . "<br>" . $conn->error;
+		    echo "Error: " . $strSQL . "<br>" . $conn->error;
 		}
 
 		$conn->close();
